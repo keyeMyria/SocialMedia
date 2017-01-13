@@ -1,0 +1,20 @@
+.po img {
+		border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+}
+.po{
+	margin-left: 30%;	
+
+}
+
+.posted{
+
+	display: block-inline;
+	font-size: 15px;
+	color: #ee5706;
+	padding-bottom: 2%;
+	padding-top: 6%;
+
+	width: 500px;
+}

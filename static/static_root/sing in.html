@@ -1,0 +1,22 @@
+<html>
+<head>
+	{% load staticfiles %}
+
+  <link rel="stylesheet" type="text/css" href="{% static"bootstrap/css/bootstrap.css"%}">
+  <link rel="stylesheet" type="text/css" href="{% static"bootstrap/css/bootstrap.min.css"%}">
+  <link rel="stylesheet" type="text/css" href="C:\Users\med\main\templates\pages\css\bootstrap.css">
+  <title>sign in </title>
+</head>
+<body>
+<br><br><br><br><br><br>
+<div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="/">log in</a>
+        </div>
+        <form>{% csrf_token %}
+        	<input class="btn btn btn-primary btn-block" type="submit" value="sign in">
+        </form>
+    </div>
+</body>
+</html>

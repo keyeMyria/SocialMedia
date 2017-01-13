@@ -1,0 +1,102 @@
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+
+	
+
+
+
+{% block content %}
+{% include "pages\head.html" %}
+{% include "registration\bar.html" %}
+
+<head>
+  <title>welecome</title>
+  <link rel="stylesheet" type="text/css" href="{% static "css/style2.css"%}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/style1.css"%}">
+
+</head>
+{% if user.is_authenticated %}
+
+
+<body><form method="post" class="navbar-form" action="/look">
+<div class="navbar">
+<div class="container">
+  <div class="brand">
+    <h2><a>Fetcher</a></h2>
+     </div>
+
+
+    <ul class="links">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/admin/settings">Settings</a></li>      
+      <li ><a href="/admin/logout">leave</a> </li>
+      <li>look for</li>
+      <input type="text" name='look' class="form-control" >
+    
+
+    </ul>
+
+    <div class="clearfix"></div>
+      </div>
+
+</div>
+<div class="menu">
+<ul>
+  <img width="200" height="200"  src="{% static "img/logo.png"%}">
+  <li><a href="/about">About me </a></li>
+  <li><a href="/intrest">intrest</a></li>
+  <li><a href="/page">page</a></li>
+
+</ul>
+</div>
+
+<div class="pr">
+  <div class="container">
+    
+
+
+  </div>
+</div>
+<br>  
+<footer class="botom">
+<div class="con">
+  
+</div>
+  
+</footer>
+  
+</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% else %}
+<br><br><br><br>
+
+<div class="col-sm-6 col-sm-offset-4"> 
+<h1 class="ps">register </h1>
+<form method="post" action="." >
+  {% csrf_token %}
+  {{ form | crispy }}
+
+  <input class="btn btn-primary " type="submit" value="{% trans 'Submit' %}" />
+</form>
+</div>
+
+{% endif %}
+
+{% endblock %}

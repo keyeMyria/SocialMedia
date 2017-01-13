@@ -1,0 +1,61 @@
+
+
+{% load staticfiles %}
+  <script src="{% static "js/jquery-1.10.2.js"%}"></script>
+
+
+<script >
+
+ $( window ).scroll(function() {
+    $("#1").offset({ top:$(window).scrollTop() });
+  })
+
+</script>
+
+<div style="z-index:1" class="navbar" id="1">
+<div class="container"  >
+  <div class="brand" >
+    <h2><a href="">Fetcher</a></h2>
+     </div>
+
+
+    <ul class="links" >
+     
+      
+      {% if user.is_anonymous %}
+      <li><a href="/accounts/login/">login </a></li>
+      <li><a href="/accounts/register/">sign in </a></li>
+
+      {% else %}
+
+       <li ><a href="/"  >Home</a></li>
+   
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/admin/settings">Settings</a></li>      
+      <li ><a href="/accounts/logout">leave</a> </li>
+      <li>look for</li>
+     <li> <input type="text" name='look' class="form-control" id="look" ></li>
+     {% endif %}
+    
+
+    </ul>
+
+    <div class="clearfix"></div>
+      </div>
+
+
+</div>
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div id="tb" class="modal-content">
+    <span class="close" id="close">×</span>
+    <span class="close" id="act">*</span>
+   <h3>seach result ...</h3>
+  </div>
+
+</div>
+
+<script src="{% static "js\img_cover.js"%}"></script>
+

@@ -1,0 +1,50 @@
+
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+
+	
+
+
+
+{% block content %}
+{% include "pages\head.html" %}
+{% include "registration\bar.html" %}
+
+  {% if user.is_authenticated %}
+
+<p>you re already logged in</p>
+  {% else %}
+<br><br><br><br><br><br>
+<style type="text/css">
+  
+  .btn-primary, .btn-primary:focus,.btn-primary:hover {
+    color: #ee5706;
+    background-color: white;
+    border-color: #ee5706;
+  }
+  .btn-primary:submit{
+     color: white;
+    background-color: #ee5706;
+    border-color: white;
+  }
+</style>
+<div class="col-sm-6 col-sm-offset-4"> 
+<h1>register </h1>
+<form method="post" action="." >
+  {% csrf_token %}
+  {{ form | crispy }}
+
+  <input class="btn btn-primary " type="submit" value="{% trans 'Submit' %}" />
+</form>
+<br><br><br>
+<label>by med amine dahmen</label>
+</div>
+
+
+{% endif %}
+
+{% endblock %}
+

@@ -1,0 +1,114 @@
+<html>
+
+
+<head>{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% include "pages\head.html" %}
+
+
+  <title>{{ title}}
+</title>
+  
+</head>
+<body>
+
+
+{% if self.user.is_authenticated %}
+
+
+
+
+
+<form method="post" class="navbar-form" action="/look">
+<div class="navbar">
+<div class="container">
+  <div class="brand">
+    <h2><a>Fetcher</a></h2>
+     </div>
+
+
+    <ul class="links">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/admin/settings">Settings</a></li>      
+      <li ><a href="/admin/logout">leave</a> </li>
+      <li>look for</li>
+      <input type="text" name='look' class="form-control" >
+    
+
+    </ul>
+
+    <div class="clearfix"></div>
+      </div>
+
+</div>
+<div class="menu" id="2">
+<ul>
+  <img width="200" height="200"  src="{% static "img/logo.png"%}">
+  <li><a href="/about">About me </a></li>
+  <li><a href="/intrest">intrest</a></li>
+  <li><a href="/page">page</a></li>
+
+</ul>
+</div>
+
+<div class="pr">
+  <div class="container">
+    
+
+
+  </div>
+</div>
+<br>  
+<footer class="botom">
+<div class="con">
+  
+</div>
+  
+</footer>
+  
+</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+{% else %}
+<br><br><br><br><br><br>
+
+<div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="/sign" style="margin-left:2px; font-weight:bold;font-size:20px;">Sign</a>
+        </div>
+          <div class="panel-body">
+            <form accept-charset="UTF-8" role="form" action="/admin/login/" method="post">{% csrf_token %}
+                    <fieldset>
+                <div class="form-group">
+                  <input class="form-control" placeholder="E-mail" name="username" type="text">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+              </div>
+              <div class="checkbox">
+                  <label>
+                    <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                  </label>
+                </div>
+              <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+            </fieldset>
+              </form>
+          </div>
+      </div>
+    </div>
+{% endif %}
+</body>
+</html>

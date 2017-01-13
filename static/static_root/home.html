@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>welecome Home   </title>
+	{% load staticfiles %}
+	{% include "pages/head.html" %}
+
+
+<div id="myModal2" class="modal">
+
+  <!-- Modal content -->
+  <div id="tb2" class="modal-content">
+    <span class="close" id="close">×</span>
+
+
+<ul class="tab">
+  <li><a href="#" style="margin-left: 1px;" onclick="openCity(event, 'iframe')">IFrame</a></li>
+    
+  <li><a href="#" style="margin-left: 1px;" onclick="openCity(event, 'ol')">Our Link</a></li>
+</ul>
+
+<!-- ol method-->
+<div class="tabcontent" id="ol">
+<br>
+<label>past url :</label> <input type="text" id="url" ><br>
+<label id="result_site"></label>
+<div id="printer">
+  
+</div>
+<img id="loads" style="display: none;border:0px;" width="100" height="80" src="{% static "img/spinner.gif"%}">
+<input type="submit" id="url-send" class="btn btn-primary" onsubmit="return false;" value="start">
+
+</div>
+<!-- iframe method-->
+<div id="iframe" class="tabcontent">
+<iframe height="300px" width="100%"  name="iframe_a" ></iframe><br><br>
+<input type="text" id="url_fetch" ">
+<br><br>
+<p style="margin-bottom: -30px;">target the page you would like to open </p>
+<a  style="margin-left: 1px;margin-top:2px;" href="#" target="iframe_a" id="iframe_a">get page to Fetch</a> 
+</div>
+  </div>
+
+</div>
+</head>
+
+{% include "registration/bar.html"%}
+
+<body >
+{% if user.is_authenticated %}
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static "css/home.css"%}">
+<link rel="stylesheet" type="text/css" href="{% static "css/pop_up.css"%}">
+<link rel="stylesheet" type="text/css" href="{% static "css/tab.css"%}">
+
+<input type="hidden" id="id_user" value={{user}}>
+
+
+
+<div class=" col-sm-2 col-sm-offset-1">
+<ul class="home_li">
+
+<li><img id="pic" width="200" height="200" src="{% static "img/logo.png"%}"></li>	
+<li><a href="/mypages" >My pages</a></li>	
+<li><a href="#" id="new">Add pages</a></li>	
+ </ul>
+ </div>
+
+<div class= "col-sm-2 col-sm-offset-2 ">
+	<ul class="home_li2">
+	<li><h3 style="font-size:15px;color:#ee5706;font-weight:bold;">post on your timeline</h3></li>
+		<li><form name="f"  onsubmit="return false;">
+			<textarea class="in1 form-group"  type="text" id="pt" autocomplete="off"></textarea>
+		{% csrf_token %}<br><br>
+		<input class="btn btn-primary" id="op"  type="submit" value="post"></form></li>
+	</ul>
+</div>
+<div class="container"></div>
+<div class="posts" id="wall">
+
+
+
+
+
+
+
+
+
+</div>
+
+<script src="{% static "js/home.js"%}"></script>
+<script src="{% static "js/tab.js"%}"></script>
+{% endif %}
+
+
+</body>
+</html>

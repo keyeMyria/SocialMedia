@@ -1,0 +1,68 @@
+{% include "pages\head.html" %} 
+<head>
+  <title>{{title}} </title>
+  
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+  <link rel="stylesheet" type="text/css" href="{% static "css\pop_up.css"%}">
+  <link rel="stylesheet" type="text/css" href="{% static "css\style2.css"%}">
+  <link rel="stylesheet" type="text/css" href="{% static "css\prof.css"%}">
+</head>
+<body id="menu" id2={{direc}} >
+
+<form method="post" class="navbar-form" action="" onsubmit="return false;">
+{% include "registration/bar.html"%}
+
+
+{% csrf_token %}
+<div class="menu" >
+  <div class="im" id="cover">
+    <div class="im2" id="pic">
+    
+    </div>
+<ul id="2">
+
+  <li><a href="/about">About me </a></li>
+  <li><a href="/intrest">intrest</a></li>
+  <li><a href="/page">page</a></li>
+
+</ul>
+</div><br><br>
+
+<div class="pr">
+  <div class="container">
+    
+
+<script >
+
+  $("#pic").ready($.post( "http://127.0.0.1:80/inner/pic_im1", {"id": $("body").attr("id2")} ,function( data ) {
+        $(".im2").css("background","url("+data+")");
+        $(".im2").css("background-size","300px 300px");
+        $(".im2").css("background-repeat","no-repeat");
+      }));
+    $("#cover").ready($.post( "http://127.0.0.1:80/inner/pic_im2", {"id": $("body").attr("id2")},function( data ) {
+        $(".im").css("background","url("+data+")");
+        $(".im").css("background-repeat","no-repeat");
+        $(".im").css("background-position","center");
+        $(".im").css("background-color","black");
+
+      }));
+</script>
+  </div>
+</div>
+<br>  
+
+<label style=" color:#ee5706">by med amine dahmen</label>
+ 
+<div class="posts" id="wall" ic="0">
+<div class="container"></div>
+</div>
+<script src="{% static "js/posts.js"%}"></script>
+
+  
+</div>
+</form>
+
