@@ -25,7 +25,7 @@ SECRET_KEY = 'n9-!ro7_3!(r-wosmexjx(ng@n55v52z896*h3g3d=59lsl(-m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ["192.168.8.100", "127.0.0.1"]
 
 
 SOUTH_MIGRATION_MODULES = {
@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'scrp',
     'inner',
     'mstf',
+    'chatroom',
+    #'security',
+    'gallery',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -64,6 +67,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #My Middlewares
+    #'security.Middleware.save_requests',
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -138,7 +143,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'medadamine42@gmail.com'
-EMAIL_HOST_PASSWORD = 'Mohamedes2'
+EMAIL_HOST_PASSWORD = 'Mohamedes1'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Static files (CSS, JavaScript, Images)
@@ -161,3 +166,28 @@ if DEBUG:
     SITE_ID=2
 else:
     SITE_ID=1
+
+
+SECURITY_CHECK = "F:/files_tmp/"
+
+
+
+
+
+
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+DEBUG = False
+
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass

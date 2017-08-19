@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>welecome Home   </title>
+	<title> {{ title }}  </title>
 	{% load staticfiles %}
 	{% include "pages/head.html" %}
    <link rel="shortcut icon" type="image/x-icon" href="{% static "img/logo.ico"%}" />	
+   <link type="text/css" href="{% static "css/scrp.css"%}" />	
 
 
 <div id="myModal2" class="modal">
@@ -34,7 +35,7 @@
 </div>
 <!-- iframe method-->
 <div id="iframe" class="tabcontent">
-<iframe height="300px" width="100%"  name="iframe_a" ></iframe><br><br>
+<iframe height="300px" width="100%" id="iframe_a" name="iframe_a" ></iframe><br><br>
 <input type="text" id="url_fetch" ">
 <br><br>
 <p style="margin-bottom: -30px;">target the page you would like to open </p>
@@ -87,6 +88,7 @@
 <script src="{% static "js/home.js"%}"></script>
 <script src="{% static "js/tab.js"%}"></script>
 <script src="{% static "js/posts.js"%}"></script>
+<!--<script type="text/javascript" src="{% static "js/select.js"%}"></script> -->
 
 {% endif %}
 

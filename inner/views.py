@@ -9,7 +9,7 @@ import json,os,requests
 
 from mstf.frame import msg_maker
 
-mimetype = 'application/json'
+mimetype_json = 'application/json'
 
 
 def test(a,b):
@@ -36,10 +36,11 @@ def  look_for_users(self):
 	  		tmp["img"]=im_id(long(j["id"]))
 	  		data.append(tmp)
 	data=json.dumps(data)
-	return HttpResponse(data,mimetype)
+	return HttpResponse(data,mimetype_json)
 
 @csrf_exempt
 def pic_im1(self):
+	print self.POST
 	try:
 	  pk= self.POST["id"]
 	except:
@@ -106,9 +107,9 @@ def status(self):
 	try:
 		i=int(self.POST["ic"])
 		pid=int(self.POST["pid"])
+		print i,pid
 		if pid==-1:
 			pid=self.user.id
-		msg_maker("serving  pid",str(pid))
 		if self.user.is_authenticated():
 			data=[]
 			query=(p.objects.filter(user_id=pid).order_by("date")[::-1])[i:i+4]
@@ -124,7 +125,7 @@ def status(self):
 			rq=""
 	except Exception as e:
 		rq=""
-	return HttpResponse(rq,mimetype)
+	return HttpResponse(rq,mimetype_json)
 @csrf_exempt
 def passcheck(self):
   try:
@@ -138,3 +139,7 @@ def passcheck(self):
   except Exception as e:
   	 return HttpResponse("5848")
 
+
+@csrf_exempt
+def pic(self):
+	 self.FILES['file']

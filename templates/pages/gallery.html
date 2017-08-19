@@ -1,0 +1,52 @@
+
+{% load staticfiles %}
+{% include "registration/bar.html"%}
+{% include "pages/head.html"%}
+<html>
+<head>
+<title>welecome {{ self.user.first_name }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>
+   *{
+   	  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+   }
+ 
+
+.container img:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+
+}
+
+ .container img{
+ 	margin-bottom:  10px;
+ 	    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+ }  
+.imagetiles .container{
+  overflow: hidden;
+
+}
+  div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
+  padding: 0px;
+  margin-left: -360px;
+  margin-right: 380px;
+}
+    </style>
+
+</head>
+<body>
+{% csrf_token %}
+<input type='hidden' id="media" value={{media_url}} >
+
+<div class="container" id="gal"  style="display: block;float:center;">
+    </div>
+  <script src="{% static "js\gallery.js"%}"></script>
+
+</body>
+</html>

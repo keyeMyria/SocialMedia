@@ -1,6 +1,6 @@
-var host="127.0.0.1"
+var host="127.0.0.1:8080"
 
-$("#pic").ready($.post( "http://"+host+":80/inner/pic_im1",function( data ) {
+$("#pic").ready($.post( "http://"+host+"/inner/pic_im1",function( data ) {
         $("#pic").attr("src",data)
         $(".po").attr("src",data)
         $(".po").attr("width","80")  
@@ -11,12 +11,12 @@ $("#pic").ready($.post( "http://"+host+":80/inner/pic_im1",function( data ) {
 
 	$("#op").click(function(){
 			if ($("#pt").val()!=""){
-		$.post( "http://"+host+":80/inner/post/poste",{"pp":$("#pt").val()}, function( data ) {	
+		$.post( "http://"+host+"/inner/post/poste",{"pp":$("#pt").val()}, function( data ) {	
 			if (data=="200"){
 				alert("you should connect first");
 			}
 			else if(data=="100"){
-				$.post( "http://"+host+":80/inner/pic_im1",{"id":$("#id_user").val()},function( da ) {
+				$.post( "http://"+host+"/inner/pic_im1",{"id":$("#id_user").val()},function( da ) {
 
           a=$("<div id='t'  class='po' style='padding-top:400px' id='container'></div>");          
           c=$("<div></div>").append("<img src="+da+" width='80' height='80'>");
@@ -64,7 +64,7 @@ $('#close').click(function(e){
 
 $("#url-send").click(function(){
 		$("#loads").css("display","block");
-	$.post("http://"+host+":80/inner/post/load_site",{"url":$("#url").val()},function(data){
+	$.post("http://"+host+"/inner/post/load_site",{"url":$("#url").val()},function(data){
 		$("#loads").css("display","none");
 		if (data.slice(0,2)=="100"){
 			$("#result_site").text("something went wrong try again");
@@ -74,7 +74,7 @@ $("#url-send").click(function(){
 			//$("#printer").append();
 		}
 		$(function() {
-	var $frame = $('<iframe style="width:100%; height:800px;">');
+	var $frame = $('<iframe style="width:100%; height0px;">');
 	$('#printer').html( $frame );
 	setTimeout( function() {
 		var jq  ='<scr' + 'ipt src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></scr' + 'ipt>';

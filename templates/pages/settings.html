@@ -1,0 +1,49 @@
+	{% load staticfiles %}
+  {% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+{% include "pages/head.html" %}
+<style type="text/css">
+	.form-control {
+		margin-left: 25%;
+
+	}
+
+</style>
+</head>
+<body>
+{% include "registration/bar.html" %}
+
+<div   style="margin-top: 5%;border: 3px solid #ee5706" class="col-md-4 col-md-offset-4" >
+	<form  align="center" accept-charset="UTF-8" role="form" class="form-group" action="/settings" method="post">{% csrf_token %}<br>
+			<label for="pass">last name</label><br>
+			<input class="form-control lb" type="text" name="last" id="last"><br>
+
+			<label for="pass">first name</label><br>
+			<input class="form-control lb" type="text" name="first" id="first"><br>
+
+
+			<label for="name">username</label><br>
+			<input align="right" class="form-control lb" type="text" name="name" id="name"><br>
+
+			<label for="name">password</label><br>
+			<input align="right" class="form-control lb" type="text" name="name" id="name"><br>
+			
+			<label for="pass">re-input password</label><br>
+			<input class="form-control lb" type="password" name="pass" id="pass"><br>
+
+			
+
+
+					
+
+              <input class="btn btn-lg btn-primary btn-block" type="submit" value="save">
+	</form>
+
+</div>
+
+</body>
+</html>

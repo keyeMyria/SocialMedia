@@ -1,12 +1,13 @@
+var host ="127.0.0.1:8080"
 function loadit(a){
 	if ($("#end_p").length ==0)
 	if (($(window).scrollTop() == ($(document).height() - $(window).height()) )|| a)  {
 	
 $("#loads_post").attr("style","margin-left: 30%;display:block;border:0px;");
-$.post("http://"+host+":80/inner/post/load_posts",{"ic":$("#wall").attr("ic"),"pid":$("#menu").attr("id2")||-1},function(posts){
+$.post("http://"+host+"/inner/post/load_posts",{"ic":$("#wall").attr("ic"),"pid":$("#menu").attr("id2")||-1},function(posts){
 	if (posts != ""){
 	
-			$.post( "http://"+host+":80/inner/pic_im1",{"id":posts.userid},function( data ) {
+			$.post( "http://"+host+"/inner/pic_im1",{"id":posts.userid},function( data ) {
 					for (i=0;i<=posts.length-1;i++){
 
           a=$("<div class='po' id='container'></div>");          

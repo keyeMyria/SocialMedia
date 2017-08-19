@@ -16,7 +16,6 @@ class user(models.Model):
 
 
 
-
 class site(models.Model):
 	_id=models.AutoField(primary_key=True,null=False,default=0)
 	id=models.ForeignKey('user',null=False)
@@ -24,12 +23,14 @@ class site(models.Model):
 	user_pass=models.CharField(max_length=350)
 	pat=models.FileField(upload_to=os.path.join(settings.BASE_DIR,'patterns'))
 
+
+
 class poste(models.Model):
 	date = models.DateTimeField(primary_key=True,auto_now_add=True,auto_now=False, blank=True)
 	user_id=models.IntegerField(blank=False)
 	post=models.TextField(blank=False,null=False)
-
-
+	class Meta:
+		app_label='scrp'
 		
 #class captch(models.Model):
 #	captcha = CaptchaField()

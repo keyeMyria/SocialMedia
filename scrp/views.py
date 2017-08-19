@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User as user
 from django.conf import settings
 import sqlite3 as sq
+import os
 
 
 class connnect(object):
@@ -27,10 +28,52 @@ class connnect(object):
 
 
 def main(self):
-	if self.user.is_authenticated():
-			title='welecome home  %s '%(self.user)
 
-	return render(self,"pages/home.html")
+	if self.user.is_authenticated():
+			title='welecome home  %s '%(self.user.first_name)
+			return render(self,"pages/home.html",locals())
+	else:
+			return redirect("/accounts/login/")
+
+def setup(self):
+	try:
+		p=self.POST["pass"]
+	except :
+		p=None
+	try:
+		name=self.POST["name"] 
+	except :
+		name=None
+
+	try:
+		f=self.POST["first"]
+	except :
+		f=None
+	try:
+		l=self.POST["last"] 
+	except :
+		l=None
+				
+	if self.user.is_authenticated():
+		title = 'setting up profile'
+		if p or name or l or f:
+			u=user.objects.get(pk=self.user.id)
+			if control(name,'user'):
+				u.username = name
+			if control(p,'pass'):
+				u.set_password(p)
+			if control(f, 'name'):
+				u.first_name=f
+			if control(l, 'name'):
+				u.last_name=l
+			u.save()
+			return HttpResponse("200")
+		else:
+			return render(self, os.path.join("pages","settings.html"),locals())
+
+			
+	else:
+		redirect("/")
 
 def sign(self):
 	form=user(self.POST or None)
@@ -42,10 +85,9 @@ def sign(self):
 			instance.save()
 			return render(self,"pages/sign_done.html",locals())
 
-	return render(self,"pages/sign in.html",locals())
+	return render(self,os.path.join("pages","sign in.html"),locals())
 @csrf_exempt
 def pattern(self):
-	print "reached self" ,self.POST
 	#if self.user.is_authenticated():
 	if self.POST:
 		pat=self.POST["pat"]
@@ -57,14 +99,32 @@ def pattern(self):
 		return redirect("/")
 def prof(self):
   try:
-  		direc=self.GET["id"]
-		title=get_object_or_404(user,pk=direc).username
-		return render(self,"registration/profile.html",locals())
+  	direc=self.GET["id"]
+	title=get_object_or_404(user,pk=direc).username
+	return render(self,os.path.join("registration","profile.html"),locals())
   except:
 	if self.user.is_authenticated():
 		#im1=get_object_or_404(user,pk=self.user.id)
 		title=self.user
 		direc=self.user.id
-		return render(self,"registration/profile.html",locals())
+		return render(self,os.path.join("registration","profile.html"),locals())
 	else:
 		return redirect('/accounts/login/')
+def control(elem,typ):
+	import string
+	if elem ==None:
+		return False
+	if type=="user":
+		pass
+	if typ=="name":
+		if len(elem) <=1 :
+			return False
+		for i in list(elem):
+			if not(i in string.printable[:62]):
+				return False
+	elif typ=='pass':
+		if len(elem)<8:
+			return False
+
+	return True
+	

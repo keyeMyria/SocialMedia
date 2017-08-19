@@ -1,0 +1,7 @@
+*.pyc
+db.sqlite3
+myenv
+__pycache__
+local_settings.py
+porn
+static

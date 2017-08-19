@@ -50,8 +50,7 @@ color: #ee5706;
 .navbar .links li{
 	display: inline-block;
 	font-size: 15px;
-	padding: 10px 15px;
-	text-transform: uppercase;
+	padding: 10px 12px;
 	font-weight: bold;
 	color: #ccc;
 
