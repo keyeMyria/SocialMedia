@@ -20,7 +20,7 @@ from scrp.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
-from gallery.views import (serve_gallery , serve_gallery_all)
+from gallery.views import (serve_gallery , serve_gallery_all, test_1)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',main,name="login page and home"),
@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^settings',setup),
     url(r'^gallery$',serve_gallery,name="img gallery of serving"),
     url(r'^gallery/all$',serve_gallery_all,name="img gallery of all images"),
+    url(r'^gallery/l$',test_1),
 
     
 ]

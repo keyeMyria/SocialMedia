@@ -1,13 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> {{ title }}  </title>
-	{% load staticfiles %}
-	{% include "pages/head.html" %}
-   <link rel="shortcut icon" type="image/x-icon" href="{% static "img/logo.ico"%}" />	
-   <link type="text/css" href="{% static "css/scrp.css"%}" />	
+{% load staticfiles %}
+{% include "pages/head.html" %}
+{% include "registration/bar.html"%}
+{% include "pages/load.html" %}
+
+<script src="{% static "js/load.js"%}"></script>
 
 
+  <title> {{ title }}  </title>
+  <link rel="shortcut icon" type="image/x-icon" href="{% static "img/logo.ico"%}" />	
+  <link type="text/css" href="{% static "css/scrp.css"%}" />	
+
+
+<style type="text/css">
+ *{
+      -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+   }
+ 
+
+ img:hover {
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.5);
+  z-index: 10;
+
+}
+
+img{
+  margin-bottom:  10px;
+      -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+ }  
+  .form-group {
+    margin-bottom: 15px;
+    background-color: transparent;
+    border-width: 0.1px;
+    border-color: #ee5706;
+    border-style: solid;
+  }
+</style>
+
+</head>   
+<body>
 <div id="myModal2" class="modal">
 
   <!-- Modal content -->
@@ -44,11 +83,10 @@
   </div>
 
 </div>
-</head>
 
-{% include "registration/bar.html"%}
 
-<body >
+
+
 {% if user.is_authenticated %}
 
 
@@ -64,8 +102,7 @@
 <ul class="home_li">
 
 <li><img id="pic" width="200" height="200" src="{% static "img/logo.png"%}"></li>	
-<li><a href="/mypages" >My pages</a></li>	
-<li><a href="#" id="new">Add pages</a></li>	
+<li><a href="#" >About me</a></li>	
  </ul>
  </div>
 
@@ -84,7 +121,7 @@
 <img  id="loads_post" style="margin-left: 30%;display:none;border:0px;" width="100" height="80" src="{% static "img/spinner.gif"%}">
 
 </div>
-
+   
 <script src="{% static "js/home.js"%}"></script>
 <script src="{% static "js/tab.js"%}"></script>
 <script src="{% static "js/posts.js"%}"></script>

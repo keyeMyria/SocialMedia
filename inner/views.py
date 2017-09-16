@@ -19,7 +19,7 @@ def test(a,b):
 	except Exception as e:
 		return None
 
-@csrf_exempt
+
 def  look_for_users(self):
 	p=self.POST
 	d=['username','first_name','last_name','email']
@@ -38,34 +38,33 @@ def  look_for_users(self):
 	data=json.dumps(data)
 	return HttpResponse(data,mimetype_json)
 
-@csrf_exempt
+
 def pic_im1(self):
-	print self.POST
 	try:
 	  pk= self.POST["id"]
 	except:
 	  pk=self.user.id
 	try:
-	  exec("""data =user2.objects.filter(use_id=%s)"""%(pk))
+	  data =user2.objects.filter(use_id=pk)
 	  return HttpResponse("/media/"+data.values()[0]["img"])
 	except:
 	  return HttpResponse("static/img/logo.png")	
 	
 
 
-@csrf_exempt
+
 def pic_im2(self):
 	try:
 	  pk= self.POST["id"]
 	except:
 	  pk=self.user.id
 	try:
-	  exec("""data =user2.objects.filter(use_id=%s)"""%(pk))
+	  data =user2.objects.filter(use_id=pk)
 	  return HttpResponse("/media/"+data.values()[0]["img_c"])
 	except:
 	  return HttpResponse("static/img/logo.png")	
 
-@csrf_exempt
+
 def im_id(ie):
 	try:
 	  exec("""data =user2.objects.filter(use_id=%s)"""%(ie))
@@ -73,7 +72,6 @@ def im_id(ie):
 	except Exception:
 		return "static/img/logo.png"
 
-@csrf_exempt
 def poste(self):
 	if self.user.is_authenticated():
 		try:
@@ -88,7 +86,7 @@ def poste(self):
 		except Exception as e:
 			return HttpResponse("150")
 	return HttpResponse("200")
-@csrf_exempt
+
 def load_site(self):
 	headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 	try:
@@ -101,8 +99,8 @@ def load_site(self):
 	except Exception as e:
 		return HttpResponse("100 "+str(e))
 	return HttpResponse("200 "+str(res))
+#you need to add authentication for permission
 
-@csrf_exempt
 def status(self):
 	try:
 		i=int(self.POST["ic"])
@@ -114,8 +112,9 @@ def status(self):
 			data=[]
 			query=(p.objects.filter(user_id=pid).order_by("date")[::-1])[i:i+4]
 			for  f in query:
+				t=user.objects.filter(pk=f.user_id)[0]
 				rq={}
-				rq["author"]=user.objects.filter(pk=f.user_id)[0].username
+				rq["author"]=t.first_name + " " + t.last_name
 				rq["post"]=f.post
 				rq["userid"]=f.user_id  
 				data.append(rq)
@@ -126,7 +125,7 @@ def status(self):
 	except Exception as e:
 		rq=""
 	return HttpResponse(rq,mimetype_json)
-@csrf_exempt
+
 def passcheck(self):
   try:
 	if self.POST:
@@ -140,6 +139,17 @@ def passcheck(self):
   	 return HttpResponse("5848")
 
 
-@csrf_exempt
+
 def pic(self):
-	 self.FILES['file']
+	try:
+	    img = self.FILES['file']
+	    from gallery.models import gallery_img 
+	    d=user2.objects.get(use=self.user.id)
+	    d.img = img
+	    d.save()
+	    d=gallery_img.objects.create(user_id=self.user.id,img=img)
+	    d.save()
+	    return HttpResponse("200")
+	except Exception as e:
+	    print e
+	    return HttpResponse("null")

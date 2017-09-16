@@ -1,6 +1,5 @@
-var host="127.0.0.1:8080"
 
-$("#pic").ready($.post( "http://"+host+"/inner/pic_im1",function( data ) {
+$("#pic").ready($.post( "/inner/pic_im1",{"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value},function( data ) {
         $("#pic").attr("src",data)
         $(".po").attr("src",data)
         $(".po").attr("width","80")  
@@ -11,12 +10,12 @@ $("#pic").ready($.post( "http://"+host+"/inner/pic_im1",function( data ) {
 
 	$("#op").click(function(){
 			if ($("#pt").val()!=""){
-		$.post( "http://"+host+"/inner/post/poste",{"pp":$("#pt").val()}, function( data ) {	
+		$.post( "/inner/post/poste",{"pp":$("#pt").val()}, function( data ) {	
 			if (data=="200"){
 				alert("you should connect first");
 			}
 			else if(data=="100"){
-				$.post( "http://"+host+"/inner/pic_im1",{"id":$("#id_user").val()},function( da ) {
+				$.post( "/inner/pic_im1",{"id":$("#id_user").val()},function( da ) {
 
           a=$("<div id='t'  class='po' style='padding-top:400px' id='container'></div>");          
           c=$("<div></div>").append("<img src="+da+" width='80' height='80'>");
@@ -64,7 +63,7 @@ $('#close').click(function(e){
 
 $("#url-send").click(function(){
 		$("#loads").css("display","block");
-	$.post("http://"+host+"/inner/post/load_site",{"url":$("#url").val()},function(data){
+	$.post("/inner/post/load_site",{"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value,"url":$("#url").val()},function(data){
 		$("#loads").css("display","none");
 		if (data.slice(0,2)=="100"){
 			$("#result_site").text("something went wrong try again");

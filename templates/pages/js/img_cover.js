@@ -1,5 +1,5 @@
 /*global $, alert,console*/
-var host="127.0.0.1:8080"
+
 
 $(function () {
 	'use strict';
@@ -22,7 +22,7 @@ $('#look').keyup(function (e){
   
 
   if (e.keyCode == 13) {
-       $.post( "http://"+host+"/inner/look",{"name":$("#look")[0].value}, function( data ) {
+       $.post( "/inner/look",{"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value,"name":$("#look")[0].value}, function( data ) {
         $("#myModal").css("display","block")
         $('#fake').remove();
         var table = $("<table id='fake'></table>");
@@ -32,12 +32,6 @@ $('#look').keyup(function (e){
         var row = $('<tr></tr>');
   
        table.append(row.append(a.append($("<img>").attr('src',data[i].img).attr('width',"150").attr('height',"150"))));
-       /****/
-
-   
-        
-
-
 }
 
 $('#tb').append(table);

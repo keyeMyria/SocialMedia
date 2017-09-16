@@ -36,14 +36,11 @@ def main(self):
 			return redirect("/accounts/login/")
 
 def setup(self):
+
 	try:
 		p=self.POST["pass"]
 	except :
 		p=None
-	try:
-		name=self.POST["name"] 
-	except :
-		name=None
 
 	try:
 		f=self.POST["first"]
@@ -53,18 +50,17 @@ def setup(self):
 		l=self.POST["last"] 
 	except :
 		l=None
+	print self.POST
 				
 	if self.user.is_authenticated():
 		title = 'setting up profile'
-		if p or name or l or f:
+		if p or l or f:
 			u=user.objects.get(pk=self.user.id)
-			if control(name,'user'):
-				u.username = name
-			if control(p,'pass'):
+			if control(p,'pass') and p :
 				u.set_password(p)
-			if control(f, 'name'):
+			if control(f, 'name') and f:
 				u.first_name=f
-			if control(l, 'name'):
+			if control(l, 'name') and l:
 				u.last_name=l
 			u.save()
 			return HttpResponse("200")
@@ -83,7 +79,7 @@ def sign(self):
 		if form.is_valid() and form_c.is_valid():
 			instance=form.save(commit=False)
 			instance.save()
-			return render(self,"pages/sign_done.html",locals())
+			return render(self,os.path.join("pages","sign in.html"),locals())
 
 	return render(self,os.path.join("pages","sign in.html"),locals())
 @csrf_exempt

@@ -25,7 +25,7 @@ SECRET_KEY = 'n9-!ro7_3!(r-wosmexjx(ng@n55v52z896*h3g3d=59lsl(-m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ["192.168.8.100", "127.0.0.1"]
+ALLOWED_HOSTS = ['*',"192.168.8.100", "127.0.0.1"]
 
 
 SOUTH_MIGRATION_MODULES = {
@@ -169,25 +169,3 @@ else:
 
 
 SECURITY_CHECK = "F:/files_tmp/"
-
-
-
-
-
-
-
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-ALLOWED_HOSTS = ['*']
-
-DEBUG = False
-
-
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass

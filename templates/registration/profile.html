@@ -16,7 +16,35 @@
 
 <form method="post" class="navbar-form" action="" onsubmit="return false;">
 {% include "registration/bar.html"%}
+<style type="text/css">
+  *{
+      -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+   }
+ 
 
+ img:hover {
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.5);
+  z-index: 10;
+
+}
+
+img{
+  margin-bottom:  10px;
+      -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+ }  
+  .form-group {
+    margin-bottom: 15px;
+    background-color: transparent;
+    border-width: 0.1px;
+    border-color: #ee5706;
+  }
+</style>
 
 {% csrf_token %}
 <div class="menu" >
@@ -40,18 +68,18 @@
 </ul>
 </div><br><br>
 
-<div class="pr">
-  <div class="container">
+
+
     
 
 <script >
-var host ="127.0.0.1:8080"
-  $("#pic").ready($.post( "http://"+host+"/inner/pic_im1", {"id": $("body").attr("id2")} ,function( data ) {
+
+  $("#pic").ready($.post( "/inner/pic_im1", {"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value,"id": $("body").attr("id2")} ,function( data ) {
         $(".im2")[0].src=data;
       
 
       }));
-    $("#cover").ready($.post( "http://"+host+"/inner/pic_im2", {"id": $("body").attr("id2")},function( data ) {
+    $("#cover").ready($.post( "/inner/pic_im2", {"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value,"id": $("body").attr("id2")},function( data ) {
         $(".im").css("background","url("+data+")");
         $(".im").css("background-repeat","no-repeat");
         $(".im").css("background-position","center");
@@ -59,16 +87,13 @@ var host ="127.0.0.1:8080"
 
       }));
 </script>
-  </div>
-</div>
-<br>  
 
-<label style=" color:#ee5706">by med amine dahmen</label>
+
+
  
 <div class="posts" id="wall" ic="0">
 <div class="container"></div>
 </div>
-<script src="{% static "js/posts.js"%}"></script>
   <script type="text/javascript">
     function img_update(e){
         if (e.getAttribute("blur_state") =="False")
@@ -118,29 +143,23 @@ function load(){
 
 var formData = new FormData();
 formData.append('file', $("#my_file")[0].files[0]);
-formData.append('csrf_token', $("input[name='csrfmiddlewaretoken']")[1]);
+formData.append('csrfmiddlewaretoken', $('input[name="csrfmiddlewaretoken"]')[0].value);
 
 var xhr = new XMLHttpRequest();
-xhr.open('POST', '/inner/pic',{});
-
-
 xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
 
-        console.log("done");
+        if(xhr.responseText == "null"){
+          cancel();
+        }
     }
 };
 
 xhr.upload.onprogress = function (event) {
     console.log(event);
 };
-
+xhr.open('POST', '/inner/pic',formData);
 xhr.send(formData);
-
-
-
-
-
     
     
 }
@@ -151,7 +170,6 @@ function upload_or(event){
     $("#change_pid2").attr("style","display:none;");
     $("#change_pid").attr("style","display:none;");
     $(".im2").attr("main_img",$(".im2")[0].src);
-    console.log((event.target.files[0]));
     $(".im2")[0].src= URL.createObjectURL(event.target.files[0]);
     $(".im2").removeClass("blur_img");
 
@@ -172,3 +190,5 @@ function upload_or(event){
   <form  id="img_form"  method="POST" >{% csrf_token %}
 <input  name="" type="file" id="my_file" accept="image/*" style="display: none; " value="None" onchange="upload_or(event);" />
 </form>
+
+<label style=" color:#ee5706">by med amine dahmen</label>

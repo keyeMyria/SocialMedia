@@ -16,31 +16,70 @@
 </head>
 <body>
 {% include "registration/bar.html" %}
+<style type="text/css">
+	.su{padding-right: 25px;
+padding-left: 25px;
+padding-top: 1px;
+padding-bottom: 1px;}
 
-<div   style="margin-top: 5%;border: 3px solid #ee5706" class="col-md-4 col-md-offset-4" >
-	<form  align="center" accept-charset="UTF-8" role="form" class="form-group" action="/settings" method="post">{% csrf_token %}<br>
+</style>
+<script type="text/javascript" src="{% static "js/settings.js"%}"></script>
+<div   style="margin-top: 5%;border: 3px solid #ee5706" class="col-md-4 col-md-offset-4 " >
+	<form  align="center" accept-charset="UTF-8" role="form" class="form-group" onsubmit="return false;" method="post">{% csrf_token %}<br>
+			<div class="row" >
+			<div class="col-lg-4">
 			<label for="pass">last name</label><br>
-			<input class="form-control lb" type="text" name="last" id="last"><br>
+			<input class="form-control lb" type="text" name="last" id="last">
+			</div>
+			<div class="col-lg-4" style="float: right;margin: 25px;">
+			<input type="submit" class="su btn btn-primary" name="last" value="valid" onclick="subme('last');" />
+			</div>
+			<div style="clear: both;"></div>
+			</div><br>
 
-			<label for="pass">first name</label><br>
-			<input class="form-control lb" type="text" name="first" id="first"><br>
+
+			<div class="row" >
+			<div class="col-lg-4">
+			<label for="first">first name</label><br>
+			<input class="form-control lb" type="text" name="first" id="first">
+			</div>
+			<div class="col-lg-4" style="float: right;margin: 25px;">
+			<input type="submit" class="su btn btn-primary"  value="valid" onclick="subme('first');" />
+			</div>
+			<div style="clear: both;"></div>
+			</div><br>
 
 
-			<label for="name">username</label><br>
-			<input align="right" class="form-control lb" type="text" name="name" id="name"><br>
 
-			<label for="name">password</label><br>
-			<input align="right" class="form-control lb" type="text" name="name" id="name"><br>
-			
-			<label for="pass">re-input password</label><br>
-			<input class="form-control lb" type="password" name="pass" id="pass"><br>
+			<div class="row" >
+			<div class="col-lg-4">
+			<label for="pass">password</label><br>
+			<input class="form-control lb" type="text" name="pass" id="pass">
+			</div>
+			<div class="col-lg-4" style="float: right;margin: 25px;">
+		
+			</div>
+			<div style="clear: both;"></div>
+			</div><br>
 
-			
+
+
+			<div class="row" >
+			<div class="col-lg-4">
+			<label for="repass">re-input</label><br>
+			<input class="form-control lb" type="text" name="pass2" id="repass">
+			</div>
+			<div class="col-lg-4" style="float: right;margin: 25px;">
+			<input type="submit" class="su btn btn-primary" name="last" value="valid" onclick="subme('pass');" />
+			</div>
+			<div style="clear: both;"></div>
+			</div><br>
+
+		
 
 
 					
 
-              <input class="btn btn-lg btn-primary btn-block" type="submit" value="save">
 	</form>
 
 </div>

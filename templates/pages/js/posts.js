@@ -1,18 +1,17 @@
-var host ="127.0.0.1:8080"
 function loadit(a){
 	if ($("#end_p").length ==0)
 	if (($(window).scrollTop() == ($(document).height() - $(window).height()) )|| a)  {
 	
 $("#loads_post").attr("style","margin-left: 30%;display:block;border:0px;");
-$.post("http://"+host+"/inner/post/load_posts",{"ic":$("#wall").attr("ic"),"pid":$("#menu").attr("id2")||-1},function(posts){
+$.post("/inner/post/load_posts",{"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value,"ic":$("#wall").attr("ic"),"pid":$("#menu").attr("id2")||-1},function(posts){
 	if (posts != ""){
 	
-			$.post( "http://"+host+"/inner/pic_im1",{"id":posts.userid},function( data ) {
+			$.post("/inner/pic_im1",{"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value,"id":posts.userid},function( data ) {
 					for (i=0;i<=posts.length-1;i++){
 
           a=$("<div class='po' id='container'></div>");          
-          c=$("<div></div>").append("<img class='post_finder'  src="+data+" width='80' height='80'>");
-          d=$("<div></div>").append("<h3>"+posts[i].author+"</h3>"+"<p>"+posts[i].post+"</p>");
+          c=$("<div></div>").append("<img class='post_finder' style='margin-right: 40px;' src="+data+" width='80' height='80'>"+"<a style='margin-right:10px;color:#ee5706;font-size:20px;'>"+posts[i].author+"</a>");
+          d=$("<div></div>").append("<p>"+posts[i].post+"</p>");
 
           a.append(c,d);
 					$("#wall").append(a);

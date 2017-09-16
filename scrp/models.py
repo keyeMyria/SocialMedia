@@ -4,6 +4,8 @@ from django.db import models
 from captcha.fields import CaptchaField
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 import os,datetime
 # Create your models here.
 
@@ -12,7 +14,7 @@ class user(models.Model):
 	img=models.ImageField(upload_to="static/img/",null=True)
 	img_c=models.ImageField(upload_to="static/img/",null=True)
 	_ids=models.CharField(max_length=30,null=True)
- 	
+	 	
 
 
 
@@ -34,3 +36,14 @@ class poste(models.Model):
 		
 #class captch(models.Model):
 #	captcha = CaptchaField()
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+    	print instance
+        user.objects.create(use=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.user.save()

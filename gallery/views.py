@@ -5,10 +5,12 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from django.conf import settings
+import os
 
 # Create your views here.
 
-
+def test_1(self):
+	return render(self,os.path.join("test.html",''),locals())
 def serve_gallery(self):
 	import os
 	media_url = settings.MEDIA_URL

@@ -45,14 +45,16 @@ color: #ee5706;
 }
 .navbar .links {
 	float: left;
-	width: 60%
+	width: 60%;
 }
 .navbar .links li{
-	display: inline-block;
+	float: left;
 	font-size: 15px;
-	padding: 10px 12px;
+	padding-left: 30px;
 	font-weight: bold;
 	color: #ccc;
+	margin-top: 10px;
+	margin-bottom: 	0px;
 
 }
  
