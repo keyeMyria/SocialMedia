@@ -10,7 +10,7 @@ $.post("/inner/post/load_posts",{"csrfmiddlewaretoken":$('input[name="csrfmiddle
 					for (i=0;i<=posts.length-1;i++){
 
           a=$("<div class='po' id='container'></div>");          
-          c=$("<div></div>").append("<img class='post_finder' style='margin-right: 40px;' src="+data+" width='80' height='80'>"+"<a style='margin-right:10px;color:#ee5706;font-size:20px;'>"+posts[i].author+"</a>");
+          c=$("<div></div>").append("<img class='post_finder' style='margin-right: 40px;' src="+data+" width='80' height='80'>"+"<a href=/profile?id="+posts[i].userid+" style='margin-right:10px;color:#ee5706;font-size:20px;'>"+posts[i].author+"</a>");
           d=$("<div></div>").append("<p>"+posts[i].post+"</p>");
 
           a.append(c,d);

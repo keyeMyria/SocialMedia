@@ -1,0 +1,1 @@
+uwsgi --master --http :5000 --home /home/med/main/main --chdir /home/med/main/ --module main.wsgi:application --enable-threads

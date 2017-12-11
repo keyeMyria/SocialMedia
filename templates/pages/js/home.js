@@ -10,7 +10,7 @@ $("#pic").ready($.post( "/inner/pic_im1",{"csrfmiddlewaretoken":$('input[name="c
 
 	$("#op").click(function(){
 			if ($("#pt").val()!=""){
-		$.post( "/inner/post/poste",{"pp":$("#pt").val()}, function( data ) {	
+		$.post( "/inner/post/poste",{"pp":$("#pt").val(),"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value}, function( data ) {	
 			if (data=="200"){
 				alert("you should connect first");
 			}

@@ -23,7 +23,6 @@ class site(models.Model):
 	id=models.ForeignKey('user',null=False)
 	require=models.BooleanField()
 	user_pass=models.CharField(max_length=350)
-	pat=models.FileField(upload_to=os.path.join(settings.BASE_DIR,'patterns'))
 
 
 
@@ -41,7 +40,6 @@ class poste(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-    	print instance
         user.objects.create(use=instance)
 
 @receiver(post_save, sender=User)

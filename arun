@@ -1,0 +1,3 @@
+redis-server &
+./run &
+celery -A main worker -l info 

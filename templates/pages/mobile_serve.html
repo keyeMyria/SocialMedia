@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+
+{% include "pages/head.html" %}
+{% include "registration/bar.html" %}
+
+
+<body>
+	
+<script type="text/javascript">
+	function load(){
+		$.post("files",{"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value},function (data){
+		var a = $("#result")
+		for (i in data)
+		{
+  			document.write("<a href='/mobile/file?path="+data[i]+"'>"+data[i]+"</a><br>");
+		}
+		});
+	return false;
+	}
+
+</script>
+	<form method="post" onsubmit="load();return false;" > {% csrf_token %}
+		<input type="text" name="direc">
+		<input type="submit" value="send" style="color: white">
+	</form>
+
+	<br><br>
+	<div id="result">
+		
+	</div>
+
+</body>

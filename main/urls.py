@@ -21,6 +21,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from gallery.views import (serve_gallery , serve_gallery_all, test_1)
+from chatroom.views import *
+from ipack import tags
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',main,name="login page and home"),
@@ -28,18 +32,20 @@ urlpatterns = [
     url(r'^sign',sign,name="sing in "),
     url(r'^captcha/', include('captcha.urls')),
     url(r'accounts/',include('registration.backends.default.urls')),
+    url(r'mobile/',include('mob.urls')),
     url(r'^pattern/',include('scrp.url')),
     url(r'^inner/',include('inner.urls')),
+    url(r'^jobs/', include('fetcher.urls')),
     #url(r'^asyn/',list_d),
     url(r'^settings',setup),
     url(r'^gallery$',serve_gallery,name="img gallery of serving"),
     url(r'^gallery/all$',serve_gallery_all,name="img gallery of all images"),
     url(r'^gallery/l$',test_1),
-
+    url(r'^ws/', include("chatroom.urls"))
     
 ]
 if settings.DEBUG:
 	urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 	urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
-	
 
+tags.boot()

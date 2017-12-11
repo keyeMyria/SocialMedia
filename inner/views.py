@@ -77,7 +77,7 @@ def poste(self):
 		try:
 			po=self.POST["pp"]
 			if po=="":
-				return HttpResponse("are you pentesting me ! be weare of your actions ! not cool :)")
+				return HttpResponse("are you pentesting me ! be weare of your actions ! not cool :/")
 			np=p()
 			np.post=po
 			np.user_id=self.user.id
@@ -125,6 +125,9 @@ def status(self):
 	except Exception as e:
 		rq=""
 	return HttpResponse(rq,mimetype_json)
+
+
+
 
 def passcheck(self):
   try:

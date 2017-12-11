@@ -28,7 +28,7 @@ $('#look').keyup(function (e){
         var table = $("<table id='fake'></table>");
         for(i=0; i<data.length ; i++){
         
-          var a= $("<a ></a>").addClass('bar').attr("href","profile?id="+data[i].id).text( data[i].f+"\n "+data[i].email);
+          var a= $("<a ></a>").addClass('bar').attr("href","/profile?id="+data[i].id).text( data[i].f+"\n "+data[i].email);
         var row = $('<tr></tr>');
   
        table.append(row.append(a.append($("<img>").attr('src',data[i].img).attr('width',"150").attr('height',"150"))));

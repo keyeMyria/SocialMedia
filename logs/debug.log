@@ -1,0 +1,74 @@
+[2017-11-19 09:36:04] DEBUG [debug_logger.ini_Pattern:16] Sent feedback email
+[2017-11-19 09:38:23] DEBUG [debug_logger.ini_Pattern:16] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:30] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:40:59] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:41:24] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:42:03] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:42:23] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:42:32] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:42:32] DEBUG [debug_logger.Main_Task:34] Sent feedback email
+[2017-11-19 09:42:48] DEBUG [debug_logger.Main_Task:34] Sent -?
+[2017-11-19 09:42:53] DEBUG [debug_logger.Main_Task:34] Sent -?
+[2017-11-19 09:42:55] DEBUG [debug_logger.Main_Task:34] Sent -?
+[2017-11-19 09:42:57] DEBUG [debug_logger.Main_Task:34] Sent -?
+[2017-11-19 09:43:07] DEBUG [debug_logger.Main_Task:34] Sent -?
+[2017-11-19 09:43:16] DEBUG [debug_logger.Main_Task:34] Sent -?
+[2017-11-19 10:22:15] DEBUG [debug_logger.Main_Task:34] Sent -?##########
+[2017-11-19 22:41:26] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:42:22] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:42:54] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:43:30] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:43:46] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:44:24] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:45:22] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:46:16] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:46:45] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:47:15] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:47:36] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:48:49] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:49:32] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:49:51] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:50:14] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:50:27] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:51:00] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:52:11] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:53:44] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:54:32] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:55:12] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:55:27] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:56:12] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:57:39] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:57:50] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-19 22:59:27] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-21 10:44:28] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-21 10:44:35] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-21 10:44:58] DEBUG [debug_logger.ini_Pattern:20] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:38:34] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:39:12] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:40:21] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:42:29] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:43:41] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:44:11] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:44:54] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:45:39] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:47:03] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:47:31] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:49:53] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:51:41] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:53:52] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-24 13:54:41] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-25 00:16:47] DEBUG [debug_logger.ini_Pattern:25] <WSGIRequest: POST '/jobs/ini_job'>
+[2017-11-25 00:31:43] DEBUG [debug_logger.ini_Pattern:24] --------------*-*-**-*
+[2017-11-25 00:32:16] DEBUG [debug_logger.ini_Pattern:24] --------------*-*-**-*
+[2017-11-25 00:32:53] DEBUG [debug_logger.ini_Pattern:24] --------------*-*-**-*
+[2017-11-25 00:33:07] DEBUG [debug_logger.ini_Pattern:32] "'ra'"
+[2017-11-25 00:33:22] DEBUG [debug_logger.ini_Pattern:32] "'ra'"

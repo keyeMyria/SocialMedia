@@ -1,0 +1,207 @@
+{% load staticfiles %}
+{% include "pages/head.html" %}
+{% include "registration/bar.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>welecome {{self.user}} </title>
+	<style type="text/css">
+		.panel-primary{
+			border-color:  #ee5706;
+		}
+		.panel-primary > .panel-heading{
+			background-color: #ee5706;
+			
+		}
+
+		pre {
+   background-color: ghostwhite;
+   border: 1px solid silver;
+   padding: 10px 20px;
+   margin: 20px; 
+   }
+.json-key {
+   color: brown;
+   }
+.json-value {
+   color: navy;
+   }
+.json-string {
+   color: olive;
+   }
+
+
+	</style>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{% static "js/create_fetcher.js"%}" ></script>
+
+</head>
+<body>
+
+
+
+
+
+  <div id="success" class="panel-group " style="position: relative;width: 40%;right: -25%;">
+    <div class="panel panel-success">
+      <div class="panel-heading" ><h5 style="position: relative;right: -40%;">Process created</h5></div>
+    </div>
+  </div>
+
+
+  <div id="fail" class="panel-group " style="position: relative;width: 40%;right: -25%;">
+    <div class="panel panel-danger">
+      <div class="panel-heading" ><h5 style="position: relative;right: -40%;">Process failed to launch</h5></div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<div class="container collapse" id="demo" >
+  <div class="panel-group">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Create you're custom fetcher </div>
+
+      <div class="panel-body">
+
+    <form class="form-horizontal" onsubmit="return false;" >
+<fieldset>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Url ">url :</label>  
+  <div class="col-md-4">
+  <input id="Url" name="Url " placeholder="www.twitter.com" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="class">identifier :</label>  
+  <div class="col-md-4">
+  <input id="identifier" name="class" placeholder="value" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">value</label>  
+  <div class="col-md-4">
+  <input id="id_value" name="textinput" placeholder="class/id" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="radios">number of object</label>
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="radios-0">
+      <input name="radios" id="radios-0" value="1" checked="checked" type="radio">
+      one
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input name="radios" id="radios-1" value="2" type="radio">
+      list
+    </label>
+  </div>
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">look for </label>  
+  <div class="col-md-4">
+  <input id="look" name="textinput" placeholder="img/a" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">take : </label>  
+  <div class="col-md-4">
+  <input id="get" name="textinput" placeholder="text/src/alt..." class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary" onclick="run_check();">Create</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+      </div>
+    </div>
+  </div>
+<br><br><br><br><br><br>
+</div>
+
+
+<div class="container">
+
+  <div class="panel-group">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Fetch List<button data-toggle="collapse" data-target="#demo" class="btn btn-primary" style="position: relative;right: -1000px;" >add</button></div>
+
+      <div class="panel-body">
+
+	<pre><code id="account"></code></pre>{% csrf_token %}
+
+		
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      	<script type="text/javascript">
+        $("#success").fadeOut("slowly");
+$("#fail").fadeOut("slowly");
+      		if (!library)
+   var library = {};
+
+library.json = {
+   replacer: function(match, pIndent, pKey, pVal, pEnd) {
+      var key = '<span class=json-key>';
+      var val = '<span class=json-value>';
+      var str = '<span class=json-string>';
+      var r = pIndent || '';
+      if (pKey)
+         r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+      if (pVal)
+         r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+      return r + (pEnd || '');
+      },
+   prettyPrint: function(obj) {
+      var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+      return JSON.stringify(obj, null, 3)
+         .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+         .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+         .replace(jsonLine, library.json.replacer);
+      }
+   };
+$.post("/jobs/get_job",{"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value,"number":"0"},function(data){
+$('#account').html(library.json.prettyPrint(data));
+
+});
+      	</script>
+</body>
+</html>

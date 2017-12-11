@@ -1,7 +1,15 @@
 
-
 {% load staticfiles %}
-  <script src="{% static "js/jquery-1.10.2.js"%}"></script>
+
+{% load ipack %}
+
+{% load "bts" "css"%}
+
+
+{% include "pages/chatbox.html" %}
+<script src="{% static "js/jquery-1.10.2.js"%}"></script>
+{% include "pages/head.html" %}
+
 
 
 <script >
@@ -25,27 +33,28 @@
       {% if user.is_anonymous %}
       <li><a href="/accounts/login/">login </a></li>
       <li><a href="/accounts/register/">sign in </a></li>
-
+     <li> <input type="text" name='look' class="form-control" id="look" ></li>  {% csrf_token %}
       {% else %}
 
        <li ><a href="/"  >Home</a></li>
    
       <li><a href="/profile">Profile</a></li>
+      <li><a href="/jobs">Fetch</a></li>
       <li><a href="/gallery">My gallery</a></li>
       <li><a href="/settings">Settings</a></li>      
-      <li ><a href="/accounts/logout">leave</a> </li>
+      <li ><a href="/accounts/logout">leave</a></li>
       <li>look for</li>
-     <li> <input type="text" name='look' class="form-control" id="look" ></li>
+     <li><input type="text" name='look' class="form-control" id="look" ></li>
      {% endif %}
     
 
     </ul>
 
-    <div class="clearfix"></div>
       </div>
 
-
 </div>
+    <div style="clear: both;" ></div>
+    
 
 <div id="myModal" class="modal">
 

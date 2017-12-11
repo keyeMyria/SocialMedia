@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
-import os
+import os,ipack
+
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +28,7 @@ SECRET_KEY = 'n9-!ro7_3!(r-wosmexjx(ng@n55v52z896*h3g3d=59lsl(-m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',"192.168.8.100", "127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 
 
 SOUTH_MIGRATION_MODULES = {
@@ -45,17 +48,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #my own made app 
+    'ipack',
     #third_part_apps
     'crispy_forms',
     'captcha',
     'registration',
+    'django_celery_results',
+    'channels_presence',
     #my_Apps
     'scrp',
     'inner',
     'mstf',
     'chatroom',
+    'channels',
+    'mob',
+    'fetcher',
     #'security',
     'gallery',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -85,6 +96,12 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+    
+    
+        'libraries':{
+            'ipack': 'ipack.tags',
+
+            },
         },
     },
 ]
@@ -95,6 +112,22 @@ SILENCED_SYSTEM_CHECKS = []
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'main',
+        'USER': 'admin',
+        'PASSWORD': 'med',
+        'HOST': '*',
+        'PORT': '5432',
+    }
+}
+
+
+
+
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -102,7 +135,7 @@ DATABASES = {
     }
 }
 
-
+"""
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -120,6 +153,105 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+
+
+#####           Loging system        ########
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    # filters will define when a logger should run
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    # format in which logs will be written
+    'formatters': {
+        'simple': {
+            'format': '[%(asctime)s] %(levelname)s %(message)s',
+        'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'verbose': {
+            'format': '[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s',
+        'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+    },
+    # handlers define the file to be written, which level to write in that file,
+    # which format to use and which filter applies to that logger
+    'handlers': {
+        'debug_logfile_mobile': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'], # do not run debug logger in production
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR,'logs', 'debug.log'),
+            'formatter': 'verbose'
+        },
+        'error_logfile_mobile': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'], # run logger in production
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR,'logs', 'error.log'),
+            'formatter': 'verbose'
+        },
+    },
+    # here the handlers for the loggers and the level of each logger is defined
+    'loggers': {
+        'error_logger': {
+            'handlers': ['error_logfile_mobile'],
+            'level': 'ERROR'
+         },
+        'debug_logger': {
+            'handlers': ['debug_logfile_mobile'],
+            'level': 'DEBUG'
+        },
+    }
+}
+
+
+
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "chatroom.routing.channel_routing",
+    },
+}
+
+
+
+
+
+
+
+
+
+
+
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Africa/Nairobi'
+
+
+
+
+
+
+
+
 
 
 # Internationalization
@@ -169,3 +301,18 @@ else:
 
 
 SECURITY_CHECK = "F:/files_tmp/"
+
+
+#/bootstrap  packages --> change the name 'bootstrap'
+IPACK= os.path.join(STATICFILES_DIRS[0],"codes")
+
+
+#Fetcher localisation
+
+
+
+R_FOLDER = os.path.join("PATTERNS","Result_url")
+RF_FOLDER = os.path.join("PATTERNS","final_result")
+
+
+

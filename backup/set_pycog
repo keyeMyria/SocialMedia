@@ -1,0 +1,64 @@
+Basically, notes for myself.
+
+This is a step by step guide that I use to get a postgresql database
+set up for a new django website.
+
+Postgresql has a user, postgres, that is used for certain config aspects:
+
+If you're on a new machine without a database cluster setup start with
+As root:
+# pacman -Syu
+# pacman -S postgresql
+# exit
+
+$ sudo -i -u postgres
+[postgres@...] $ initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
+
+To start the server now, as root, you can simpoly use:
+# systemctl start postgresql.service
+
+Once you have the database cluster set up and the database server running
+you can switch again to the postgres user and create the database for
+your project.
+
+For the database, create a user.  To make it easy, I just use
+my regular user for it.
+
+$ sudo -i -u postgres
+[postgres@...] $ createuser --interactive
+Enter the name of role to add:  username
+Shall the new role be a superuser? (y/n) y
+[postgres@...] $ exit
+
+If you created the database with your regular username
+you can now, as yourself, do the following to create the
+database you need for your project:
+
+$ createdb databasename
+$ 
+
+If you're using your regular username, then the password
+will be your user's password.
+
+Go to your django project.  I'm assuming you're using a virtualenv
+$ source /path/to/project/bin/activate
+(project) $ pip install psycopg2
+
+Now, set up the database in your settings - this is copied
+directly from Django docs. (https://docs.djangoproject.com/en/1.9/ref/settings/)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydatabase',
+        'USER': 'mydatabaseuser',
+        'PASSWORD': 'mypassword',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+
+Now you can carry on with django stuff:
+$ ./manage.py makemigrations
+$ ./manage.py migrate
+$ etc
