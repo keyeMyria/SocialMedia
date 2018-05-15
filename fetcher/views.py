@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from models import db_site as site
+from .models import db_site as site
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.conf import settings

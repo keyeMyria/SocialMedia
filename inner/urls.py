@@ -1,5 +1,5 @@
 from django.conf.urls import url 
-from views import *
+from .views import *
 urlpatterns=[
 url(r'pass',passcheck,name="password check"),
 url(r'look',look_for_users,name="look_for_someone"),

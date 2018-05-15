@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User as user
 from scrp.models import user as user2
 from scrp.models import poste as p
-import json,os,requests
+import json,os,requests, datetime
 
 from mstf.frame import msg_maker
 
@@ -47,7 +47,7 @@ def pic_im1(self):
 	try:
 	  data =user2.objects.filter(use_id=pk)
 	  return HttpResponse("/media/"+data.values()[0]["img"])
-	except:
+	except Exception as e:
 	  return HttpResponse("static/img/logo.png")	
 	
 
@@ -67,23 +67,27 @@ def pic_im2(self):
 
 def im_id(ie):
 	try:
-	  exec("""data =user2.objects.filter(use_id=%s)"""%(ie))
+	  data =user2.objects.filter(use_id=ie)
 	  return "media/"+str(data[0].img)
 	except Exception:
 		return "static/img/logo.png"
 
 def poste(self):
-	if self.user.is_authenticated():
+	if self.user.is_authenticated:
 		try:
 			po=self.POST["pp"]
+			sender = self.user
+			PTO = int(self.POST["PTO"])
 			if po=="":
 				return HttpResponse("are you pentesting me ! be weare of your actions ! not cool :/")
 			np=p()
-			np.post=po
-			np.user_id=self.user.id
+			np.poste = po
+			np.postFrom = sender
+			np.postTo = user.objects.get(id=PTO)
 			np.save()
 			return HttpResponse("100")
 		except Exception as e:
+			print(e)
 			return HttpResponse("150")
 	return HttpResponse("200")
 
@@ -105,18 +109,17 @@ def status(self):
 	try:
 		i=int(self.POST["ic"])
 		pid=int(self.POST["pid"])
-		print i,pid
-		if pid==-1:
+		if pid<=-1:
 			pid=self.user.id
-		if self.user.is_authenticated():
+		if self.user.is_authenticated:
 			data=[]
-			query=(p.objects.filter(user_id=pid).order_by("date")[::-1])[i:i+4]
+			query=(p.p_mngr.get_postes(pid)).order_by("date")[::-1][i:i+4]
 			for  f in query:
-				t=user.objects.filter(pk=f.user_id)[0]
+				t=user.objects.filter(pk=f.postFrom.id)[0]
 				rq={}
 				rq["author"]=t.first_name + " " + t.last_name
-				rq["post"]=f.post
-				rq["userid"]=f.user_id  
+				rq["post"]=f.poste
+				rq["userid"]=f.postFrom.id
 				data.append(rq)
 			rq=json.dumps(data)
 
@@ -124,22 +127,23 @@ def status(self):
 			rq=""
 	except Exception as e:
 		rq=""
+		print("[**************]",e)
 	return HttpResponse(rq,mimetype_json)
 
 
 
 
 def passcheck(self):
-  try:
-	if self.POST:
-		t=user.objects.get(username=self.POST["user"])
-		if t:
-			if t.check_password(self.POST["pass"]):
-				return HttpResponse("100")
-			else:
-				return HttpResponse("50")
-  except Exception as e:
-  	 return HttpResponse("5848")
+	try:
+		if self.POST:
+			t=user.objects.get(username=self.POST["user"])
+			if t:
+				if t.check_password(self.POST["pass"]):
+					return HttpResponse("100")
+				else:
+					return HttpResponse("50")
+	except Exception as e:
+  		return HttpResponse("5848")
 
 
 
@@ -154,5 +158,5 @@ def pic(self):
 	    d.save()
 	    return HttpResponse("200")
 	except Exception as e:
-	    print e
+	    print(e)
 	    return HttpResponse("null")

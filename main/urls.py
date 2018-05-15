@@ -15,6 +15,7 @@ Including another URLconf
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import url , include
+from django.urls import path
 from django.contrib import admin
 from scrp.views import *
 from django.conf import settings
@@ -26,22 +27,23 @@ from ipack import tags
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$',main,name="login page and home"),
-    url(r'^prof',prof,name="profile"),
-    url(r'^sign',sign,name="sing in "),
-    url(r'^captcha/', include('captcha.urls')),
-    url(r'accounts/',include('registration.backends.default.urls')),
-    url(r'mobile/',include('mob.urls')),
-    url(r'^pattern/',include('scrp.url')),
-    url(r'^inner/',include('inner.urls')),
-    url(r'^jobs/', include('fetcher.urls')),
+    path(r'admin/', admin.site.urls),
+    path(r'',main,name="login page and home"),
+    path(r'prof',prof,name="profile"),
+    path(r'sign',sign,name="sing in "),
+    path(r'captcha/', include('captcha.urls')),
+    path(r'accounts/',include('registration.backends.default.urls')),
+    path(r'mobile/',include('mob.urls')),
+    path(r'pattern/',include('scrp.url')),
+    path(r'inner/',include('inner.urls')),
+    path(r'jobs/', include('fetcher.urls')),
     #url(r'^asyn/',list_d),
-    url(r'^settings',setup),
-    url(r'^gallery$',serve_gallery,name="img gallery of serving"),
-    url(r'^gallery/all$',serve_gallery_all,name="img gallery of all images"),
-    url(r'^gallery/l$',test_1),
-    url(r'^ws/', include("chatroom.urls"))
+    path(r'settings',setup),
+    path(r'gallery',serve_gallery,name="img gallery of serving"),
+    path(r'gallery/all',serve_gallery_all,name="img gallery of all images"),
+    #url(r'^gallery/l$',test_1),
+    path(r'ws/', include("chatroom.urls")),
+    path(r'friends/', include("friends.urls")),
     
 ]
 if settings.DEBUG:
@@ -49,3 +51,10 @@ if settings.DEBUG:
 	urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 tags.boot()
+
+
+
+
+
+
+

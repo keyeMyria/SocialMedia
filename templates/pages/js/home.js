@@ -10,12 +10,12 @@ $("#pic").ready($.post( "/inner/pic_im1",{"csrfmiddlewaretoken":$('input[name="c
 
 	$("#op").click(function(){
 			if ($("#pt").val()!=""){
-		$.post( "/inner/post/poste",{"pp":$("#pt").val(),"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value}, function( data ) {	
+		$.post( "/inner/post/poste",{"pp":$("#pt").val(),"PTO":$("#id_user").val(),"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value}, function( data ) {	
 			if (data=="200"){
 				alert("you should connect first");
 			}
 			else if(data=="100"){
-				$.post( "/inner/pic_im1",{"id":$("#id_user").val()},function( da ) {
+				$.post( "/inner/pic_im1",{"id":$("#id_user").val(),"csrfmiddlewaretoken":$('input[name="csrfmiddlewaretoken"]')[0].value},function( da ) {
 
           a=$("<div id='t'  class='po' style='padding-top:400px' id='container'></div>");          
           c=$("<div></div>").append("<img src="+da+" width='80' height='80'>");

@@ -1,0 +1,95 @@
+[2018-04-05 07:48:37 -0400] [5501] [INFO] Starting gunicorn 19.7.1
+[2018-04-05 07:48:37 -0400] [5501] [INFO] Listening at: unix:env/run/g.socket (5501)
+[2018-04-05 07:48:37 -0400] [5501] [INFO] Using worker: sync
+[2018-04-05 07:48:37 -0400] [5504] [INFO] Booting worker with pid: 5504
+[2018-04-05 07:49:07 -0400] [5501] [INFO] Handling signal: int
+[2018-04-05 07:49:07 -0400] [5501] [INFO] Unhandled exception in main loop
+Traceback (most recent call last):
+  File "/home/med/.virtualenvs/env/local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 224, in run
+    handler()
+  File "/home/med/.virtualenvs/env/local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 263, in handle_int
+    self.stop(False)
+  File "/home/med/.virtualenvs/env/local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 382, in stop
+    sock.close_sockets(self.LISTENERS, unlink)
+  File "/home/med/.virtualenvs/env/local/lib/python3.6/site-packages/gunicorn/sock.py", line 208, in close_sockets
+    os.unlink(sock_name)
+FileNotFoundError: [Errno 2] No such file or directory: 'env/run/g.socket'
+[2018-04-05 11:49:07 +0000] [5504] [INFO] Worker exiting (pid: 5504)
+[2018-04-05 07:49:11 -0400] [5523] [INFO] Starting gunicorn 19.7.1
+[2018-04-05 07:49:11 -0400] [5523] [INFO] Listening at: unix:env/run/g.socket (5523)
+[2018-04-05 07:49:11 -0400] [5523] [INFO] Using worker: sync
+[2018-04-05 07:49:11 -0400] [5527] [INFO] Booting worker with pid: 5527
+[2018-04-05 07:50:25 -0400] [5523] [INFO] Handling signal: int
+[2018-04-05 11:50:25 +0000] [5527] [INFO] Worker exiting (pid: 5527)
+[2018-04-05 07:50:25 -0400] [5523] [INFO] Shutting down: Master
+[2018-04-05 07:50:28 -0400] [5543] [INFO] Starting gunicorn 19.7.1
+[2018-04-05 07:50:28 -0400] [5543] [INFO] Listening at: unix:env/run/g.socket (5543)
+[2018-04-05 07:50:28 -0400] [5543] [INFO] Using worker: sync
+[2018-04-05 07:50:28 -0400] [5546] [INFO] Booting worker with pid: 5546
+[2018-04-05 07:53:06 -0400] [5543] [INFO] Handling signal: int
+[2018-04-05 11:53:06 +0000] [5546] [INFO] Worker exiting (pid: 5546)
+[2018-04-05 07:53:07 -0400] [5543] [INFO] Shutting down: Master
+[2018-04-07 10:58:11 -0400] [3206] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 10:58:11 -0400] [3206] [INFO] Listening at: unix:env/run/g.socket (3206)
+[2018-04-07 10:58:11 -0400] [3206] [INFO] Using worker: sync
+[2018-04-07 10:58:11 -0400] [3209] [INFO] Booting worker with pid: 3209
+[2018-04-07 11:00:18 -0400] [3206] [INFO] Handling signal: int
+[2018-04-07 15:00:18 +0000] [3209] [INFO] Worker exiting (pid: 3209)
+[2018-04-07 11:00:19 -0400] [3206] [INFO] Shutting down: Master
+[2018-04-07 11:00:20 -0400] [3224] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 11:00:20 -0400] [3224] [INFO] Listening at: unix:env/run/g.socket (3224)
+[2018-04-07 11:00:20 -0400] [3224] [INFO] Using worker: sync
+[2018-04-07 11:00:20 -0400] [3229] [INFO] Booting worker with pid: 3229
+[2018-04-07 11:02:58 -0400] [3224] [INFO] Handling signal: int
+[2018-04-07 15:02:58 +0000] [3229] [INFO] Worker exiting (pid: 3229)
+[2018-04-07 11:02:59 -0400] [3224] [INFO] Shutting down: Master
+[2018-04-07 11:03:23 -0400] [3264] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 11:03:23 -0400] [3264] [INFO] Listening at: unix:env/run/g.socket (3264)
+[2018-04-07 11:03:23 -0400] [3264] [INFO] Using worker: sync
+[2018-04-07 11:03:23 -0400] [3267] [INFO] Booting worker with pid: 3267
+[2018-04-07 11:03:25 -0400] [3264] [INFO] Handling signal: int
+[2018-04-07 15:03:25 +0000] [3267] [INFO] Worker exiting (pid: 3267)
+[2018-04-07 11:03:26 -0400] [3264] [INFO] Shutting down: Master
+[2018-04-07 11:28:20 -0400] [3832] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 11:28:20 -0400] [3832] [INFO] Listening at: unix:env/run/g.socket (3832)
+[2018-04-07 11:28:20 -0400] [3832] [INFO] Using worker: sync
+[2018-04-07 11:28:20 -0400] [3836] [INFO] Booting worker with pid: 3836
+[2018-04-07 11:28:27 -0400] [3832] [INFO] Handling signal: int
+[2018-04-07 15:28:27 +0000] [3836] [INFO] Worker exiting (pid: 3836)
+[2018-04-07 11:28:28 -0400] [3832] [INFO] Shutting down: Master
+[2018-04-07 15:37:28 -0400] [1571] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 15:37:28 -0400] [1571] [INFO] Listening at: unix:env/run/g.socket (1571)
+[2018-04-07 15:37:28 -0400] [1571] [INFO] Using worker: sync
+[2018-04-07 15:37:28 -0400] [1582] [INFO] Booting worker with pid: 1582
+[2018-04-07 15:46:52 -0400] [1571] [INFO] Handling signal: int
+[2018-04-07 19:46:52 +0000] [1582] [INFO] Worker exiting (pid: 1582)
+[2018-04-07 15:46:53 -0400] [1571] [INFO] Shutting down: Master
+[2018-04-07 15:46:55 -0400] [2058] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 15:46:55 -0400] [2058] [INFO] Listening at: unix:env/run/g.socket (2058)
+[2018-04-07 15:46:55 -0400] [2058] [INFO] Using worker: sync
+[2018-04-07 15:46:55 -0400] [2061] [INFO] Booting worker with pid: 2061
+[2018-04-07 15:50:44 -0400] [2195] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 15:50:44 -0400] [2195] [INFO] Listening at: unix:env/run/ws.socket (2195)
+[2018-04-07 15:50:44 -0400] [2195] [INFO] Using worker: sync
+[2018-04-07 15:50:44 -0400] [2198] [INFO] Booting worker with pid: 2198
+[2018-04-07 15:51:02 -0400] [2195] [INFO] Handling signal: int
+[2018-04-07 19:51:02 +0000] [2198] [INFO] Worker exiting (pid: 2198)
+[2018-04-07 15:51:02 -0400] [2195] [INFO] Shutting down: Master
+[2018-04-07 16:04:09 -0400] [2058] [INFO] Handling signal: winch
+[2018-04-07 16:13:50 -0400] [2058] [INFO] Handling signal: int
+[2018-04-07 20:13:50 +0000] [2061] [INFO] Worker exiting (pid: 2061)
+[2018-04-07 16:13:50 -0400] [2058] [INFO] Shutting down: Master
+[2018-04-07 16:14:00 -0400] [2704] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 16:14:00 -0400] [2704] [INFO] Listening at: unix:env/run/g.socket (2704)
+[2018-04-07 16:14:00 -0400] [2704] [INFO] Using worker: sync
+[2018-04-07 16:14:00 -0400] [2707] [INFO] Booting worker with pid: 2707
+[2018-04-07 16:24:27 -0400] [2704] [INFO] Handling signal: int
+[2018-04-07 20:24:27 +0000] [2707] [INFO] Worker exiting (pid: 2707)
+[2018-04-07 16:24:28 -0400] [2704] [INFO] Shutting down: Master
+[2018-04-07 16:24:31 -0400] [2996] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 16:24:31 -0400] [2996] [INFO] Listening at: unix:env/run/g.socket (2996)
+[2018-04-07 16:24:31 -0400] [2996] [INFO] Using worker: sync
+[2018-04-07 16:24:31 -0400] [2999] [INFO] Booting worker with pid: 2999
+[2018-04-07 16:32:11 -0400] [2996] [INFO] Handling signal: hup
+[2018-04-07 16:32:11 -0400] [2996] [INFO] Hang up: Master
+[2018-04-07 16:32:11 -0400] [3127] [INFO] Booting worker with pid: 3127

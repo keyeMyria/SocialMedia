@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class ChatMessage(models.Model):
-	sender   = models.ForeignKey(User, related_name = 'sender_user')
-	receiver = models.ForeignKey(User, related_name = 'receiver_user')
+	sender   = models.ForeignKey(User, related_name = 'sender_user',on_delete=models.CASCADE,)
+	receiver = models.ForeignKey(User, related_name = 'receiver_user',on_delete=models.CASCADE,)
 	message  = models.CharField(max_length = 200)
 	received_at = models.DateTimeField(auto_now_add = True)
 	read_on = models.DateTimeField()

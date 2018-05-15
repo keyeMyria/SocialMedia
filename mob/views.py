@@ -3,7 +3,7 @@ from os import listdir
 from django.http import HttpResponse
 from django.utils.encoding import smart_str
 import logging,json,os
-from models import task_tmp as at
+from .models import task_tmp as at
 # Create your views here.
 debug= logging.getLogger('debug_logger').debug
 

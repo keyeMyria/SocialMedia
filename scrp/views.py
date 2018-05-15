@@ -7,7 +7,9 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User as user
 from django.conf import settings
 import sqlite3 as sq
-import os
+import os,logging
+
+
 
 
 class connnect(object):
@@ -25,11 +27,12 @@ class connnect(object):
 
 
 # Create your views here.
+debug= logging.getLogger('debug_logger').debug
 
 
 def main(self):
 
-	if self.user.is_authenticated():
+	if self.user.is_authenticated:
 			title='welecome home  %s '%(self.user.first_name)
 			return render(self,"pages/home.html",locals())
 	else:
@@ -50,7 +53,7 @@ def setup(self):
 		l=self.POST["last"] 
 	except :
 		l=None
-	print self.POST
+	print(self.POST)
 				
 	if self.user.is_authenticated():
 		title = 'setting up profile'
@@ -93,19 +96,16 @@ def pattern(self):
 
 	else:
 		return redirect("/")
+
 def prof(self):
-  try:
-  	direc=self.GET["id"]
-	title=get_object_or_404(user,pk=direc).username
-	return render(self,os.path.join("registration","profile.html"),locals())
-  except:
-	if self.user.is_authenticated():
-		#im1=get_object_or_404(user,pk=self.user.id)
-		title=self.user
-		direc=self.user.id
+	if self.user.is_authenticated:
+
+		direc = self.user.id 
+		title = self.user.get_full_name() or "Unknow user name"
 		return render(self,os.path.join("registration","profile.html"),locals())
 	else:
 		return redirect('/accounts/login/')
+
 def control(elem,typ):
 	import string
 	if elem ==None:
@@ -124,3 +124,9 @@ def control(elem,typ):
 
 	return True
 	
+
+
+
+def  test_geio(self):
+	a=str(self.META('geoip_city'))
+	return HttpResponse(str(a))

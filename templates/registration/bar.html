@@ -6,10 +6,15 @@
 {% load "bts" "css"%}
 
 
-{% include "pages/chatbox.html" %}
+
+
+
+
 <script src="{% static "js/jquery-1.10.2.js"%}"></script>
+<script src="{% static "js/sweetalert2.all.js"%}"></script>
 {% include "pages/head.html" %}
 
+{% include "pages/chatbox.html" %}
 
 
 <script >
@@ -17,6 +22,8 @@
  $( window ).scroll(function() {
     $("#1").offset({ top:$(window).scrollTop() });
   })
+
+
 
 </script>
 
@@ -27,45 +34,59 @@
      </div>
 
 
-    <ul class="links" >
+    <ul class="links">
      
       
       {% if user.is_anonymous %}
       <li><a href="/accounts/login/">login </a></li>
       <li><a href="/accounts/register/">sign in </a></li>
-     <li> <input type="text" name='look' class="form-control" id="look" ></li>  {% csrf_token %}
       {% else %}
 
-       <li ><a href="/"  >Home</a></li>
-   
+      <li ><a href="/">Home</a></li>
+      <li><a href="/admin">Admin</a></li>
       <li><a href="/profile">Profile</a></li>
       <li><a href="/jobs">Fetch</a></li>
+      <li><a href="#" onclick="searchr()">Search</a></li>
       <li><a href="/gallery">My gallery</a></li>
       <li><a href="/settings">Settings</a></li>      
       <li ><a href="/accounts/logout">leave</a></li>
-      <li>look for</li>
-     <li><input type="text" name='look' class="form-control" id="look" ></li>
+
+<!--       <div style="position: relative;float:right;top: 0px;">
+      <li><label>look</label></li>
+      <li><input style="" type="text" name='look' class="form-control" id="look" ></li>
+    <div style="clear: both;" ></div>
+
+      </div> -->
      {% endif %}
     
 
     </ul>
-
+    <div style="clear: both;" ></div>
       </div>
 
 </div>
-    <div style="clear: both;" ></div>
-    
 
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div id="tb" class="modal-content">
-    <span class="close" id="close">×</span>
-    <span class="close" id="act">*</span>
-   <h3>seach result ...</h3>
-  </div>
-
-</div>
 
 <script src="{% static "js\img_cover.js"%}"></script>
+
+<script type="text/javascript">
+async  function searchr(){
+
+const {value: name} = await swal({
+  title: 'What is your name?',
+  input: 'text',
+  inputPlaceholder: 'Enter  name or nickname',
+  showCancelButton: true,
+  confirmButtonColor:"#ee5706",
+  inputValidator: (value) => {
+    return !value && 'You need to write something!'
+  }
+})
+
+if (name) {
+  swal({type: 'success', title: 'Hi, ' + name})
+}
+
+ }
+</script>
 

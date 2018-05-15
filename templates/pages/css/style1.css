@@ -44,11 +44,11 @@ color: #ee5706;
 	clear: both
 }
 .navbar .links {
-	float: left;
+	float: right;
 	width: 60%;
 }
 .navbar .links li{
-	float: left;
+	display: inline;
 	font-size: 15px;
 	padding-left: 30px;
 	font-weight: bold;
@@ -60,6 +60,7 @@ color: #ee5706;
  
 .navbar {
 	height: 20px;
+	padding-right: 50px;
 }
 
 

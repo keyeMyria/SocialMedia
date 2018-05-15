@@ -20,7 +20,6 @@ def serve_gallery(self):
 
 def serve_gallery_all(self):
 	if self.user.is_authenticated():
-		print self.user.id,self.user.username
 		from .models import gallery_img 
 		import json,os
 		img_list=[{"img" : obj._as_dict()} for obj in gallery_img.objects.filter(user_id=self.user.id).order_by('created')]

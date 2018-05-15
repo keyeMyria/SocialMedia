@@ -1,1 +1,1 @@
-gunicorn main.wsgi:application --bind unix:env/run/g.socket  --access-logfile /home/med/main/logs/gunicorn.log
+gunicorn main.wsgi:application  --bind unix:env/run/g.socket --access-logfile /home/med/main/logs/gunicorn-logs.log --error-logfile /home/med/main/logs/gunicorn-errorlogs.log

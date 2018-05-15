@@ -10,7 +10,7 @@ debug= logging.getLogger('debug_logger').debug
 
 class db_site(models.Model):
 	Fid=models.AutoField(primary_key=True)
-	Uid=models.ForeignKey(User,blank=False,null=False)
+	Uid=models.ForeignKey(User,blank=False,null=False,on_delete=models.CASCADE,)
 	mypat=models.FileField(upload_to=os.path.join(settings.BASE_DIR,'patterns')[1:],null=False,blank=False)
 	base_url=models.URLField(blank=False,null=False)
 	def create_patter(self,pats):

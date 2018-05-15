@@ -1,0 +1,15 @@
+[2018-04-07 15:51:48 -0400] [2230] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 15:51:48 -0400] [2230] [INFO] Listening at: unix:env/run/ws.socket (2230)
+[2018-04-07 15:51:48 -0400] [2230] [INFO] Using worker: sync
+[2018-04-07 15:51:48 -0400] [2233] [INFO] Booting worker with pid: 2233
+[2018-04-07 16:04:12 -0400] [2230] [INFO] Handling signal: winch
+[2018-04-07 16:14:02 -0400] [2230] [INFO] Handling signal: int
+[2018-04-07 20:14:02 +0000] [2233] [INFO] Worker exiting (pid: 2233)
+[2018-04-07 16:14:02 -0400] [2230] [INFO] Shutting down: Master
+[2018-04-07 16:14:09 -0400] [2717] [INFO] Starting gunicorn 19.7.1
+[2018-04-07 16:14:09 -0400] [2717] [INFO] Listening at: unix:env/run/ws.socket (2717)
+[2018-04-07 16:14:09 -0400] [2717] [INFO] Using worker: sync
+[2018-04-07 16:14:09 -0400] [2720] [INFO] Booting worker with pid: 2720
+[2018-04-07 16:18:07 -0400] [2717] [INFO] Handling signal: int
+[2018-04-07 20:18:07 +0000] [2720] [INFO] Worker exiting (pid: 2720)
+[2018-04-07 16:18:07 -0400] [2717] [INFO] Shutting down: Master

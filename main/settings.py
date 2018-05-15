@@ -15,6 +15,7 @@ import os,ipack
 
 
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,9 +27,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'n9-!ro7_3!(r-wosmexjx(ng@n55v52z896*h3g3d=59lsl(-m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['.fetcher.com','*']
 
 
 SOUTH_MIGRATION_MODULES = {
@@ -41,41 +42,41 @@ SOUTH_MIGRATION_MODULES = {
 
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #my own made app 
     'ipack',
+  #  'monitor',
     #third_part_apps
     'crispy_forms',
     'captcha',
     'registration',
     'django_celery_results',
-    'channels_presence',
+    #'channels_presence',
     #my_Apps
     'scrp',
     'inner',
     'mstf',
     'chatroom',
-    'channels',
     'mob',
     'fetcher',
+    'friends',
     #'security',
     'gallery',
 
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #My Middlewares
@@ -106,7 +107,13 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'main.wsgi.application'
+
+
+
+
 
 SILENCED_SYSTEM_CHECKS = []
 # Database
@@ -217,19 +224,15 @@ LOGGING = {
 
 
 
+ASGI_APPLICATION = 'main.routing.application'
 CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
         },
-        "ROUTING": "chatroom.routing.channel_routing",
     },
 }
-
-
-
-
 
 
 
@@ -309,10 +312,17 @@ IPACK= os.path.join(STATICFILES_DIRS[0],"codes")
 
 #Fetcher localisation
 
+HOST_FULL = "127.0.0.1:8000"
 
 
 R_FOLDER = os.path.join("PATTERNS","Result_url")
 RF_FOLDER = os.path.join("PATTERNS","final_result")
 
 
+"""from monitor.myapp import client
 
+R_DEBUG= True
+
+     
+if R_DEBUG:
+    client.on_start_up()"""

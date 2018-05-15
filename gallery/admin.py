@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from models import gallery_img
+from .models import gallery_img
 
 
 admin.site.register(gallery_img)

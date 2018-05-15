@@ -1,0 +1,44 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+function check(){
+  var socket = new WebSocket('ws://127.0.0.1:8081/ws/check_user');
+
+  a= {};
+  i=0;
+  $('[id^=user_]').filter(function() {
+  a[i]=	$(this).attr('id').match(/user_[0-9]+/)[0].split("user_")[1];  
+    i++;
+
+  })
+  
+  socket.onopen = function open() {
+	socket.send(JSON.stringify(a));
+};
+
+socket.onmessage = function message(event) {
+  var data = JSON.parse(event.data);
+  console.log(data);
+  i=0;
+   $('[id^=user_]').each(function(e){
+   	if (data[i]==false){
+  		$(this).val("friends");
+  		$(this).onclick("");
+
+   	}
+
+  	})
+
+};
+
+}	
+
+</script>
+<div id="user_123456" >
+	<img src="helo" >
+</div>
+<div id="user_123456" >
+	<img src="helo" >
+</div>
+<div id="user_123456" ></div>
+<input value="add" name="user_123456"   type="submit" onclick="check(this.name);">
+

@@ -46,6 +46,7 @@
 
 .chat-box .chat-box-content {
   padding:10px;
+  margin-left: 10px;
   display:none;
 }
 
@@ -58,11 +59,64 @@
 .chat-box > input[type="checkbox"]:checked ~ .chat-box-content {display:block}
 </style>
 
-
-
-
-<div class="chat-box">
+{% if user.is_authenticated  %}
+<div class="chat-box" id="chat-box">
     <input type="checkbox" />
     <label data-expanded="Close Chatbox" data-collapsed="Open Chatbox"></label>
-    <div class="chat-box-content">Ciluk baaa!!!
-</div></div>
+
+
+</div>
+
+
+<script type="text/javascript">
+
+
+
+
+
+var fr_socket = new WebSocket('ws://' + window.location.host + '/ws/chat_list');
+
+
+fr_socket.onmessage = function message(event) {
+  var data = JSON.parse(event.data);
+  console.log(typeof data['text']);
+  if (data !==undefined){
+  $("#chat-box .chat-box-content").fadeOut();
+  $("#chat-box .chat-box-content").remove();
+  $(data).each(function (e){
+    e=data[e];
+    if (e.is_active)
+      $("#chat-box").append("<div user_id="+e.id+"   class='chat-box-content '><a onclick='alert($(this))' >[*]"+e.name+"</a></div>");
+    else
+      $("#chat-box").append("<div user_id="+e.id+" class='chat-box-content'><a onclick='alert($(this))' >"+e.name+"</a></div>");
+
+
+  })
+  
+  }
+
+
+};
+function update_friends_list_box(){
+    fr_socket.send(JSON.stringify("check_friends"));
+    setInterval(function() {
+    fr_socket.send(JSON.stringify("check_friends"));
+    }, 10000);
+  }
+
+$(document).ready(function(){
+
+fr_socket.onopen = function open() {
+  update_friends_list_box();
+  return 1;
+};
+
+if (fr_socket.readyState == WebSocket.OPEN) {
+  fr_socket.onopen();
+}
+
+});
+
+</script>
+
+{% endif %}

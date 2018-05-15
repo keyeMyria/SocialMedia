@@ -1,0 +1,4 @@
+#gunicorn main.wsgi:application  --bind unix:env/run/ws.socket --access-logfile /home/med/main/logs/gunicorn-ws-logs.log --error-logfile /home/med/main/logs/gunicorn-ws-errorlogs.log
+
+
+python manage.py runserver 127.0.0.1:8081
